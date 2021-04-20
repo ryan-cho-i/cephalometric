@@ -78,7 +78,7 @@
  
 > Second, it is not required to have high accurate. It is just required to have enough accuracy to distinguish between bones. 
 
-> Third, I think that the accuracy is no precise. 
+> Third, I think that the way how accuracy is measured is no precise. 
 
 3. Therefore, based on this, I select this model.  
 

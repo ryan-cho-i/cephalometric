@@ -55,6 +55,7 @@
 ### 7. Part 7. Result
 
 1) This is coded to predict the output in forms of Json file, Images. 
+(Blue Color means ground truth and Other colors mean the predictions)
 
 ![ES_Vatech_PaX-i_61141](https://user-images.githubusercontent.com/78337318/115352138-f7b5a900-a1f1-11eb-948b-a85d447a8b39.png)
 

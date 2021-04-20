@@ -68,9 +68,11 @@
 
 > So This project require the model not to use the memory beyond the 1.5 GiB (GPU)
 
-2. Thus I set a priority on the usage of memory in front of the accuracy when I choose the model. 
+### 2. The final choice. 
 
-3. There are some reasons for that. 
+1. Thus I set a priority on the usage of memory in front of the accuracy when I choose the model. 
+
+2. There are some reasons for that. 
 
 > First, there is no big accuracy difference between models.
  
@@ -78,7 +80,7 @@
 
 > Third, I think that the accuracy is no precise. 
 
-4. Therefore, based on this, I select this model.  
+3. Therefore, based on this, I select this model.  
 
 > When we choose the models, we must appreciate the model in perspect of 3 indices. (Accuracy, Time, and Usage)
 

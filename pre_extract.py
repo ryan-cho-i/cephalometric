@@ -39,12 +39,8 @@ def judge_word (word) :
     elif 'R' in word : 
         return 1
 
-<<<<<<< HEAD
 def extract (file_path, target) :
-=======
-def extracte (file_path, target) :
->>>>>>> e45329e9a9f7e9da5b669037c4a395b5315d8463
-
+    
     with open(file_path, "r") as json_file:       
         json_data = json.load(json_file)        
 
@@ -70,11 +66,7 @@ def extractor (file_path, target) :
 
         i = 0
         for i in range(len(word)) :
-<<<<<<< HEAD
             coord [index[i]] = extract (file_path, word[i])
-=======
-            coord [index[i]] = extracte (file_path, word[i])
->>>>>>> e45329e9a9f7e9da5b669037c4a395b5315d8463
 
     return coord 
 

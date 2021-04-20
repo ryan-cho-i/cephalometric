@@ -81,6 +81,7 @@
 4. Therefore, based on this, I select this model.  
 
 > When we choose the models, we must appreciate the model in perspect of 3 indices. (Accuracy, Time, and Usage)
+
 > As I said before, I think that the usage of memory is the most important. 
 
 

@@ -80,6 +80,9 @@
 
 > Third, I think that the way how accuracy is measured is no precise. 
 
+  >> The size of some class are small. 
+  >> Therefore, it is easy for the micro-differences to deteriorate the total accuracy. 
+
 3. Therefore, based on this, I select this model.  
 
 > When we choose the models, we must appreciate the model in perspect of 3 indices. (Accuracy, Time, and Usage)

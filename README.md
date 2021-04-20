@@ -3,6 +3,7 @@
 ### 0. Description of this project 
 
 1) This project is to do Semantic Segmentation for Cephalometric Radiograph.
+> To find the position of 'Cranial Fossa', 'Symphysis', 'Nasal Bone', 'Maxilla', 'Pterygomaxillary Fissure', and 'Orbit''Mandible'
 
 ### 1. Part 1. Download the data 
 
@@ -60,6 +61,26 @@
 ![ES_Vatech_PaX-i_61141](https://user-images.githubusercontent.com/78337318/115352138-f7b5a900-a1f1-11eb-948b-a85d447a8b39.png)
 
 # Conclusion
+
+### 1. The requirements of this project
+
+1. There is limitation on the computer usage.
+
+> So This project require the model not to use the memory beyond the 1.5 GiB (GPU)
+
+2. Thus I set a priority on usage in front of the accuracy when I choose the model. 
+
+3. There are some reasons for that. 
+
+> First, there is no big accuracy difference between models.
+ 
+> Second, it is not required to have high accurate. It is just required to have enough accuracy to distinguish between bones. 
+
+> Third, I think that the accuracy is no precise. 
+
+4. Therefore, based on this, I select this model.  
+
+
 
 
 

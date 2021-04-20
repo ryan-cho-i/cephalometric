@@ -22,7 +22,7 @@
 
 2) Draw the polylines of 7 classes on the image.
 
-### 3. Part 3. (Data Labeling) Make a mask of image.
+### 3. Part 3. (Labeling the Data) Make a mask of image.
 
 1) Make masks of the image.
 

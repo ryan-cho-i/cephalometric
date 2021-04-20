@@ -24,6 +24,7 @@ class MemoryMonitor () :
 
             sleep(1)
 
+<<<<<<< HEAD
 class MemoryMonitor2 () :
     
     def __init__(self):
@@ -43,6 +44,8 @@ class MemoryMonitor2 () :
 
             sleep(1)            
 
+=======
+>>>>>>> e45329e9a9f7e9da5b669037c4a395b5315d8463
 # Extract the max of GPU Memory 
 
 def gpu_max (name):
@@ -58,13 +61,18 @@ def gpu_max (name):
 
 # Record the used memory of CPU & GPU while operating function
 
+<<<<<<< HEAD
 def Monitor (func, best_model1, best_model2, best_model3, test_dataset1, test_dataset2, test_dataset3, DEVICE, name) :
+=======
+def Monitor (func, model_dir, x_test_dir, y_test_dir, preprocessing_fn, CLASSES, DEVICE, name) :
+>>>>>>> e45329e9a9f7e9da5b669037c4a395b5315d8463
 
     with ThreadPoolExecutor(max_workers=2) as executor: 
         monitor = MemoryMonitor(name)
         executor.submit(monitor.measuring)
 
         try : 
+<<<<<<< HEAD
             main_thread = executor.submit(func, best_model1, best_model2, best_model3, test_dataset1, test_dataset2, test_dataset3, DEVICE)
             first, done, m, prob = main_thread.result()
 
@@ -84,8 +92,16 @@ def Monitor2 (func, best_model1, best_model2, best_model3, test_dataset1, test_d
         try : 
             main_thread = executor.submit(func, best_model1, best_model2, best_model3, test_dataset1, test_dataset2, test_dataset3, DEVICE)
             first, done, m, prob = main_thread.result()
+=======
+            main_thread = executor.submit(func, model_dir, x_test_dir, y_test_dir, preprocessing_fn, CLASSES, DEVICE)
+            prob, first, done, m = main_thread.result()
+>>>>>>> e45329e9a9f7e9da5b669037c4a395b5315d8463
 
         finally:
             monitor.working = False 
 
+<<<<<<< HEAD
     return monitor.cpu, first, done, m, prob
+=======
+    return monitor.cpu, first, done, m,  
+>>>>>>> e45329e9a9f7e9da5b669037c4a395b5315d8463

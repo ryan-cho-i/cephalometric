@@ -68,7 +68,7 @@
 
 > So This project require the model not to use the memory beyond the 1.5 GiB (GPU)
 
-### 2. The final choice. 
+### 2. The final choice
 
 1. Thus I set a priority on the usage of memory in front of the accuracy when I choose the model. 
 

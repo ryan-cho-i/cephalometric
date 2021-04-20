@@ -29,7 +29,7 @@
   > Cautions : It is needed to divide 7 classes into 3 groups without overlapping. 
   
   > Hence, I divided into 3 groups.
-    (1) Group 1. 'Cranial Fossa', 'Symphysis',  'Nasal Bone'
+  >> (1) Group 1. 'Cranial Fossa', 'Symphysis',  'Nasal Bone'
     (2) Group 2. 'Maxilla', 'Pterygomaxillary Fissure', 'Orbit'
     (3) Group 3. 'Mandible'
 

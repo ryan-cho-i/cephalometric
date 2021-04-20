@@ -1,4 +1,4 @@
-# <Project Explaination>
+# Project Explaination
 
 ## 0. Description of this project 
 
@@ -56,7 +56,7 @@
 
 1) This is coded to predict the output in forms of Json file, Images. 
 
-# <Conclusion>
+# Conclusion
 
 
 

@@ -5,8 +5,8 @@ def build_model(Architecture, encoder, weights, CLASSES, activation):
         
     model_list = { 
     
-    "Deeplabv3" : smp.DeepLabV3,
-    "Deeplabv3plus" : smp.DeepLabV3Plus,
+    "DeepLabV3" : smp.DeepLabV3,
+    "DeepLabV3Plus" : smp.DeepLabV3Plus,
     "FPN" : smp.FPN,
     "Linknet" : smp.Linknet,
     "PSPnet" : smp.PSPNet,

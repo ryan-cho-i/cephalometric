@@ -199,7 +199,7 @@ cpu, first, done, m, prob = Monitor (inference, best_model1, best_model2, best_m
 
 # Result 
 
-Latency = done - first 
+Latency = first - start
 record.append(Latency)
 
 Throughput = (done - start) / m 

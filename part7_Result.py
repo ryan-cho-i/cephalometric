@@ -72,8 +72,6 @@ images_dir = os.path.abspath(images_dir)
 createFolder(images_dir)
 
 
-
-
 # extract the coordinates 
 
 def extract_coordinates (pr_mask):

@@ -50,7 +50,7 @@ client = Minio(AD, access_key=ID, secret_key=PS, secure=True)
 
 # folder_name = ['tests', 'train', 'valid']
 
-folder_name = ['tests']
+folder_name = ['tests', 'train', 'valid']
 
 # download
 

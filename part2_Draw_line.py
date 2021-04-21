@@ -100,4 +100,10 @@ def convert2line (Basic, folder):
 
 # Convert
 
-convert2line (Basic = Basic, folder = 'tests')
+folder_name = ['tests', 'train', 'valid']
+
+for folder in folder_name:      
+    
+    print ("Draw the line on the image")
+
+    convert2line (Basic = Basic, folder=folder)

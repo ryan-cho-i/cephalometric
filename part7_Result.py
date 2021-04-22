@@ -71,16 +71,25 @@ images_dir = os.path.join(Basic, 'images_file')
 images_dir = os.path.abspath(images_dir)
 createFolder(images_dir)
 
-
 # extract the coordinates 
 
 def extract_coordinates (pr_mask):
 
     im = pr_mask.astype("uint8")
-    coordi = cv2.findContours(im, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)        
-    contours = coordi[0][0].tolist()
+    coordi = cv2.findContours(im, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)       
 
-    return contours 
+    contours =[] 
+    for i in range (len (coordi)) :
+        contours.append(coordi[i])
+
+    final_contours =[]
+    for j in range (len(contours)):
+        for k in range(len(contours[j])) :
+            final_contours.append(contours[j][k].tolist())
+
+    final_contours = [coordi for coordi in final_contours if len(coordi) >= 10]    
+
+    return final_contours
 
 # Store the result of inference in forms of json 
 
@@ -95,7 +104,7 @@ def inference_json (x_test_dir, best_model1, best_model2, best_model3, test_data
     # inference
 
     m = len(name)
-    for n in range(m):
+    for n in range(1):
 
         print_progress(n,m)
 
@@ -114,11 +123,11 @@ def inference_json (x_test_dir, best_model1, best_model2, best_model3, test_data
 
         for i in range(len(['Cranial Fossa', 'Symphysis',  'Nasal Bone'])) :
             if i == 0 :
-                coordinates ["Cranial Fossa"] = extract_coordinates (pr_mask[i])
+                coordinates ["Cranial Fossa"] = extract_coordinates(pr_mask[i])
             elif i == 1 :
-                coordinates ["Symphysis"] = extract_coordinates (pr_mask[i])
+                coordinates ["Symphysis"] = extract_coordinates(pr_mask[i])
             elif i == 2 :
-                coordinates ["Nasal Bone"] = extract_coordinates (pr_mask[i])
+                coordinates ["Nasal Bone"] = extract_coordinates(pr_mask[i])
 
         # Group 2. 
 
@@ -152,6 +161,36 @@ def inference_json (x_test_dir, best_model1, best_model2, best_model3, test_data
 
         with open(file_path, 'w') as make_json:
             json.dump(coordinates, make_json)
+
+# Connect two regions
+
+def find_point (list_ex_1, list_ex_2) :
+    
+    list_num_1=[]
+    for i in range(len(list_ex_1)):
+        list_num_1.append(list_ex_1[i][0][0])
+
+    list_num_2=[]
+    for i in range(len(list_ex_2)):
+        list_num_2.append(list_ex_2[i][0][0])
+
+    list_num_np_1 = np.array(list_num_1)
+    list_num_np_2 = np.array(list_num_2)
+
+    if abs(list_num_np_1.max()-list_num_np_2.min()) > abs(list_num_np_1.min()-list_num_np_2.max()) :
+        standard1 = list_num_np_1.min()
+        standard2 = list_num_np_2.max()
+    else : 
+        standard1 = list_num_np_1.max()
+        standard2 = list_num_np_2.min()
+
+    index1 = list_num_1.index(standard1)
+    index2 = list_num_2.index(standard2)
+
+    start_point = list_ex_1[index1]
+    end_point = list_ex_2[index2]
+
+    return start_point, end_point
 
 # Draw the polyline on the image
 
@@ -197,6 +236,22 @@ def draw_polyline_predicted (image_dir, json_dir, Output_Address) :
         image = cv2.resize(image, dsize=(480, 480), interpolation=cv2.INTER_AREA)
 
         color = [(47,30,221), (53,176,235), (203,162,6), (168, 182, 33), (188,214,244), (31,23,127), (63,141,247)]
+
+        # draw 
+
+        # for j in range(len(target_list)) : 
+        #     if j == 0:
+        #         if len(pts[j]) == 1 :
+        #             image = cv2.polylines(image, [pts[j]], isClosed = True, color = color[j], thickness = 1)
+        #         # else : 
+        #         #     start_point, end_point = find_point(pts[j][0], pts[j][1])
+        #         #     image = cv2.polylines(image, [pts[j][0]], isClosed = True, color = color[j], thickness = 1)
+        #         #     image = cv2.polylines(image, [pts[j][1]], isClosed = True, color = color[j], thickness = 1)
+        #         #     image = cv2.line (image, start_point, end_point, color = color[j], thickness = 1)
+        #     else:        
+        #         image = cv2.polylines(image, [pts[j]], isClosed = True, color = color[j], thickness = 1)
+
+
 
         # draw 
 
@@ -278,8 +333,10 @@ print()
 
 # Upload the data 
 
-upload_folder (AD, ID, PS, images_dir, "soo", "ceph_result_images") 
+print("Json file Upload")
 upload_folder (AD, ID, PS, json_dir, "soo", "ceph_result_json") 
 
+print("Image file Upload")
+upload_folder (AD, ID, PS, images_dir, "soo", "ceph_result_images") 
 
 

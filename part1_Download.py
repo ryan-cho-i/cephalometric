@@ -48,8 +48,6 @@ def download (busket_name, client, Basic, folder) :
 
 client = Minio(AD, access_key=ID, secret_key=PS, secure=True)
 
-# folder_name = ['tests', 'train', 'valid']
-
 folder_name = ['tests', 'train', 'valid']
 
 # download

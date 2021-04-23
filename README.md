@@ -56,7 +56,8 @@
 ### 7. Part 7. Result
 
 1) This is coded to predict the output in forms of Json file, Images. 
-> Blue Color means ground truth and Other colors mean the predictions
+> Blue Color means ground truth and Green colors mean the predictions
+> Cautions : Sometiems, "Class 1. Cranial Fossa" is divided into two parts as output. So the code is written to perceive two part respectively and connect two parts. 
 
 ![11004](https://user-images.githubusercontent.com/78337318/115812764-e0163480-a42c-11eb-8b08-b366fff94b99.png)
 

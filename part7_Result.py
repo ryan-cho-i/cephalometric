@@ -104,7 +104,7 @@ def inference_json (x_test_dir, best_model1, best_model2, best_model3, test_data
     # inference
 
     m = len(name)
-    for n in range(1):
+    for n in range(m):
 
         print_progress(n,m)
 
@@ -187,11 +187,11 @@ def find_point (list_ex_1, list_ex_2) :
     index1 = list_num_1.index(standard1)
     index2 = list_num_2.index(standard2)
 
-    start_point = list_ex_1[index1]
-    end_point = list_ex_2[index2]
+    start_point = list_ex_1[index1][0]
+    end_point = list_ex_2[index2][0]
 
-    return start_point, end_point
-
+    return tuple(start_point), tuple(end_point)
+    
 # Draw the polyline on the image
 
 def draw_polyline_predicted (image_dir, json_dir, Output_Address) : 
@@ -222,12 +222,20 @@ def draw_polyline_predicted (image_dir, json_dir, Output_Address) :
             json_data = json.load(file)
 
             target_list = ['Cranial Fossa', 'Symphysis',  'Nasal Bone', 'Maxilla', 'Pterygomaxillary Fissure', 'Orbit', 'Mandible']
-            target=[[], [], [], [], [], [], []]
-            pts=[[], [], [], [], [], [], []]
-
-            for i in range (len(target_list)) : 
-                target [i] = json_data [target_list[i]]
-                pts[i] = np.array(target[i])
+            target=[]
+            pts=[]
+            for i in range(len(target_list)) : 
+                target.append(json_data[target_list[i]])
+            
+            if len(target[0]) == 2 : 
+                pts.append(np.array(target[0][0], np.int32))
+                pts.append(np.array(target[0][1], np.int32))       
+                for i in range(1, len(target)) :
+                    pts.append(np.array(target[i][0], np.int32))  
+                    
+            else :
+                for i in range(len(target)) :
+                    pts.append(np.array(target[i][0], np.int32))
 
         # bring the image
 
@@ -235,28 +243,14 @@ def draw_polyline_predicted (image_dir, json_dir, Output_Address) :
         image = cv2.imread(path)
         image = cv2.resize(image, dsize=(480, 480), interpolation=cv2.INTER_AREA)
 
-        color = [(47,30,221), (53,176,235), (203,162,6), (168, 182, 33), (188,214,244), (31,23,127), (63,141,247)]
-
         # draw 
 
-        # for j in range(len(target_list)) : 
-        #     if j == 0:
-        #         if len(pts[j]) == 1 :
-        #             image = cv2.polylines(image, [pts[j]], isClosed = True, color = color[j], thickness = 1)
-        #         # else : 
-        #         #     start_point, end_point = find_point(pts[j][0], pts[j][1])
-        #         #     image = cv2.polylines(image, [pts[j][0]], isClosed = True, color = color[j], thickness = 1)
-        #         #     image = cv2.polylines(image, [pts[j][1]], isClosed = True, color = color[j], thickness = 1)
-        #         #     image = cv2.line (image, start_point, end_point, color = color[j], thickness = 1)
-        #     else:        
-        #         image = cv2.polylines(image, [pts[j]], isClosed = True, color = color[j], thickness = 1)
+        for j in range(len(pts)) : 
+            image = cv2.polylines(image, [pts[j]], isClosed = True, color = (0,255,0), thickness = 1)
 
-
-
-        # draw 
-
-        for j in range(len(target_list)) : 
-            image = cv2.polylines(image, [pts[j]], isClosed = True, color = color[j], thickness = 1)
+        if len(pts) == 8 :
+            start_point, end_point = find_point (pts[0], pts[1])
+            image = cv2.line(image, start_point, end_point, (0,255,0), 1)
 
         # write the comment on the images     
 

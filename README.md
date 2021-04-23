@@ -58,7 +58,7 @@
 1) This is coded to predict the output in forms of Json file, Images. 
 > Blue Color means ground truth and Other colors mean the predictions
 
-![11004](https://user-images.githubusercontent.com/78337318/115811566-e7d4d980-a42a-11eb-863d-cd6f9eef39a3.png)
+![11004](https://user-images.githubusercontent.com/78337318/115812764-e0163480-a42c-11eb-8b08-b366fff94b99.png)
 
 # Conclusion
 

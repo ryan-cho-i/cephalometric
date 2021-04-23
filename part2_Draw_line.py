@@ -17,7 +17,7 @@ from pre_extract import extractor
 
 # Argument  
 
-parser = argparse.ArgumentParser(description="Convert the Data")
+parser = argparse.ArgumentParser(description="Draw the line on the image")
 parser.add_argument('--base', '--b', help = 'the base address of the data')
 args = parser.parse_args()
 

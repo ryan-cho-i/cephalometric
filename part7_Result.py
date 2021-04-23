@@ -256,6 +256,7 @@ def draw_polyline_predicted (image_dir, json_dir, Output_Address) :
 
         font = cv2.FONT_HERSHEY_SIMPLEX
         cv2.putText(image, 'Ground_Truth', (40,50), font, 1, (255, 0, 0), 2, cv2.LINE_AA)
+        cv2.putText(image, 'Prediction', (40,90), font, 1, (0, 255, 0), 2, cv2.LINE_AA)
 
         os.chdir(Output_Address) 
         cv2.imwrite(name[n], image) 

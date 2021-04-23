@@ -17,7 +17,7 @@ from pre_extract import extractor
 
 # Argument  
 
-parser = argparse.ArgumentParser(description="Convert the Data")
+parser = argparse.ArgumentParser(description="Make a mask using image")
 parser.add_argument('--base', '--b', help = 'the base address of the data')
 parser.add_argument('--target_list', '--t', help = 'the target of model')
 args = parser.parse_args()

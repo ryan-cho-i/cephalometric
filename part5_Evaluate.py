@@ -28,7 +28,7 @@ initial_gpu = gpu_max(record_file_first)
 
 # Argument Parsing 
 
-parser = argparse.ArgumentParser(description="Infer the result")
+parser = argparse.ArgumentParser(description="Evalutate the performance of the models")
 parser.add_argument('--base', '--b', help = 'the base address of the data')
 parser.add_argument('--architecture', '--a', help = 'the Architecture of model')
 parser.add_argument('--encoder', '--e', help = 'the Encoder of model')

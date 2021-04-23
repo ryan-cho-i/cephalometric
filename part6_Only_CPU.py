@@ -24,7 +24,7 @@ initial_cpu = first_mem.used / (2 ** 20)
 
 # Argument Parsing 
 
-parser = argparse.ArgumentParser(description="Infer the result")
+parser = argparse.ArgumentParser(description="Evalutate the performance of the models only using CPU")
 parser.add_argument('--base', '--b', help = 'the base address of the data')
 parser.add_argument('--architecture', '--a', help = 'the Architecture of model')
 parser.add_argument('--encoder', '--e', help = 'the Encoder of model')
